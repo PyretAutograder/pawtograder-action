@@ -290,7 +290,7 @@ export async function run(): Promise<void> {
       }
     } catch (error) {
       if (error instanceof Error) {
-        core.setFailed("Internal autograder error")
+        core.setFailed('Internal autograder error')
         await submitFeedback(
           {
             ret_code: 1,
@@ -298,7 +298,12 @@ export async function run(): Promise<void> {
             execution_time: Date.now() - start,
             grader_sha: graderSha,
             feedback: {
-              output: {},
+              output: {
+                hidden: {
+                  output: `An internal error occured:\n\n\`\`\`\n${inspect(error)}\n\`\`\``,
+                  output_format: 'markdown'
+                }
+              },
               tests: [],
               lint: {
                 output: 'Internal autograder error',
