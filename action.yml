@@ -80,7 +80,7 @@ runs:
           echo "USER=runner" >> $GITHUB_ENV
         fi
 
-    - uses: cachix/cachix-action@v15
+    - uses: cachix/cachix-action@v16
       with:
         name: ${{ inputs.cachix_name }}
         authToken: '${{ inputs.cachix_auth_token }}'
