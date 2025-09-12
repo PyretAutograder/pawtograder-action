@@ -50,7 +50,7 @@ export default async function grade(
     path.join(solutionDir, 'pawtograder.yml'),
     'utf8'
   )
-  const config = yaml.parse(_config) as PawtograderConfig
+  const config = yaml.parse(_config, { merge: true }) as PawtograderConfig
 
   const grader = await makeGrader(
     config,
