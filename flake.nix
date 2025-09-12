@@ -15,7 +15,7 @@
       inherit (nixpkgs) lib legacyPackages;
       eachSystem = f: lib.genAttrs (import systems) (system: f legacyPackages.${system});
       # mainNpmDepsHash = lib.fakeHash;
-      mainNpmDepsHash = "sha256-0n9G0WwbD4RRaxAWhkhYhj5Hnz3tzIST8drJqEbTq3I=";
+      mainNpmDepsHash = "sha256-UVZMCero8K44NznoknTEqO++pjEt2ivRiojqdOFdUFI=";
     in
     {
       packages = eachSystem (pkgs: rec {
@@ -70,14 +70,14 @@
 
           dontBuild = true;
 
-          # https://github.com/ironm00n/pyret-lang/tree/unmerged
+          # https://github.com/ironm00n/pyret-lang/tree/fork
           src = pkgs.fetchFromGitHub {
             name = "pyret-lang";
             owner = "ironm00n";
             repo = "pyret-lang";
-            rev = "27a74f8dd4bcc762275b487e9d9e90630a25802d";
+            rev = "d4c15493820c29d7ca627eff97761094bde4ac57"; 
             # sha256 = lib.fakeHash;
-            sha256 = "sha256-fIH8TzThMZcDoUfVOe0G+5rd6l8FuWoRf+64FoFjSko=";
+            sha256 = "sha256-hcuNJisjr/OFP/cXSYxsH7aTYJ2G+ROuZpxDfJtzpds=";
           };
 
           installPhase = ''
@@ -91,14 +91,14 @@
 
           dontBuild = true;
 
-          # https://github.com/ironm00n/code.pyret.org/tree/unmerged
+          # https://github.com/ironm00n/code.pyret.org/tree/fork
           src = pkgs.fetchFromGitHub {
             name = "cpo";
             owner = "ironm00n";
             repo = "code.pyret.org";
-            rev = "8460d0a97f0aef62f73128ae26ef2fb54f58f6e8";
+            rev = "f8d41a1e33d57cd79ba03608600701a37ed68e75";
             # sha256 = lib.fakeHash;
-            sha256 = "sha256-URrY4cGFE84K49oHB8Msbe03oFnGx1ZPF1xIpQPmojs=";
+            sha256 = "sha256-1HRkt0t6+nAwQuKOQMDqo/9xApRjJ7dRvhBhwJj09fo=";
           };
 
           patches = [
@@ -119,7 +119,7 @@
           needsCanvas = true;
 
           # npmDepsHash = lib.fakeHash;
-          npmDepsHash = "sha256-hxH66Mj2wbY5J6B9pRNen+qo8MHpw+X61D6Cgz+keMo=";
+          npmDepsHash = "sha256-97hXR2AK4ozW1I/W/rih2Kz+aKBtxvKoAY69qd5QHeE=";
 
           buildPhase = ''
             runHook preBuild
@@ -202,7 +202,7 @@
             needsCanvas = true;
 
             # npmDepsHash = lib.fakeHash;
-            npmDepsHash = "sha256-hxH66Mj2wbY5J6B9pRNen+qo8MHpw+X61D6Cgz+keMo=";
+            npmDepsHash = "sha256-97hXR2AK4ozW1I/W/rih2Kz+aKBtxvKoAY69qd5QHeE=";
             npmPruneFlags = [ "--omit=dev" ];
 
             buildPhase = ''
