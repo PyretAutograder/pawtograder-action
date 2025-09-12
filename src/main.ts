@@ -290,7 +290,7 @@ export async function run(): Promise<void> {
       }
     } catch (error) {
       if (error instanceof Error) {
-        core.setFailed(error.message)
+        core.setFailed("Internal autograder error")
         await submitFeedback(
           {
             ret_code: 1,
@@ -301,7 +301,7 @@ export async function run(): Promise<void> {
               output: {},
               tests: [],
               lint: {
-                output: '',
+                output: 'Internal autograder error',
                 status: 'fail'
               }
             },
