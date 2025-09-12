@@ -3,7 +3,6 @@ import { AutograderFeedback } from '../../api/adminServiceSchemas.js'
 import { Grader } from './Grader.js'
 import { PyretPawtograderConfig } from '../types.js'
 import { Spec, z } from 'pyret-autograder-pawtograder'
-import { inspect } from 'util'
 
 export class PyretGrader extends Grader<PyretPawtograderConfig> {
   constructor(
@@ -32,8 +31,10 @@ export class PyretGrader extends Grader<PyretPawtograderConfig> {
     }
   }
 
-  async tryGrade(): Promise<AutograderFeedback> {
+  override async grade(): Promise<AutograderFeedback> {
     const spec = await this.resolveSpec()
+
+    throw new Error('oops')
 
     return new Promise((resolve, reject) => {
       const env = {
@@ -93,29 +94,5 @@ export class PyretGrader extends Grader<PyretPawtograderConfig> {
       child.stdin.write(JSON.stringify(spec))
       child.stdin.end()
     })
-  }
-
-  override async grade(): Promise<AutograderFeedback> {
-    try {
-      return await this.tryGrade()
-    } catch (e) {
-      const studentMessage =
-        'A fatal internal autograder error occurred, please report this to course staff.'
-      return {
-        tests: [],
-        lint: {
-          output: studentMessage,
-          status: 'fail'
-        },
-        output: {
-          visible: {
-            output: studentMessage
-          },
-          hidden: {
-            output: inspect(e)
-          }
-        }
-      }
-    }
   }
 }

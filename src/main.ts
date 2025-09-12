@@ -17,6 +17,7 @@ import {
 } from './SupabaseAPI.js'
 import grade from './grading/grade.js'
 import { getEnv } from './utils.js'
+import { inspect } from 'util'
 
 async function downloadTarballAndExtractTo(url: string, dir: string) {
   const file = await fetch(url)
@@ -290,21 +291,27 @@ export async function run(): Promise<void> {
     } catch (error) {
       if (error instanceof Error) {
         core.setFailed(error.message)
-        console.error(error)
         await submitFeedback(
           {
             ret_code: 1,
-            output: `${error.message}`,
+            output: `Internal autograder error occurred`,
             execution_time: Date.now() - start,
             grader_sha: graderSha,
             feedback: {
               output: {},
               tests: [],
               lint: {
-                output: 'Unknown error',
+                output: '',
                 status: 'fail'
               }
             },
+            errors: [
+              {
+                name: error.name,
+                data: inspect(error),
+                is_private: true
+              }
+            ],
             action_ref,
             action_repository
           },

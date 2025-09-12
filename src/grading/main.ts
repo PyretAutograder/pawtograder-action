@@ -19,9 +19,7 @@ console.log(
   `Grading submissions in ${submissionDir} against solution in ${solutionDir}`
 )
 grade(solutionDir, submissionDir).then(async (feedback) => {
-  // console.log(JSON.stringify(feedback, null, 2))
-  console.log('Artifacts:')
-  console.log(feedback.artifacts)
+  console.dir(feedback, { depth: 2 })
   await writeFile(
     'pawtograder-feedback.json',
     JSON.stringify(feedback, null, 2)
