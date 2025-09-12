@@ -314,7 +314,7 @@ export async function run(): Promise<void> {
               {
                 name: error.name,
                 data: inspect(error),
-                is_private: false
+                is_private: true
               }
             ],
             action_ref,

@@ -34,8 +34,6 @@ export class PyretGrader extends Grader<PyretPawtograderConfig> {
   override async grade(): Promise<AutograderFeedback> {
     const spec = await this.resolveSpec()
 
-    throw new Error('oops')
-
     return new Promise((resolve, reject) => {
       const env = {
         PA_ARTIFACT_DIR: process.cwd(),
