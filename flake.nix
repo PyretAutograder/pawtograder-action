@@ -75,7 +75,7 @@
             name = "pyret-lang";
             owner = "ironm00n";
             repo = "pyret-lang";
-            rev = "d4c15493820c29d7ca627eff97761094bde4ac57"; 
+            rev = "d4c15493820c29d7ca627eff97761094bde4ac57";
             # sha256 = lib.fakeHash;
             sha256 = "sha256-hcuNJisjr/OFP/cXSYxsH7aTYJ2G+ROuZpxDfJtzpds=";
           };
@@ -357,6 +357,10 @@
           };
         }
       );
+
+      checks = eachSystem (pkgs: {
+
+      });
 
       devShells = eachSystem (pkgs: {
         default = pkgs.mkShell {
