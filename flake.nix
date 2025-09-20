@@ -80,6 +80,10 @@
             sha256 = "sha256-hcuNJisjr/OFP/cXSYxsH7aTYJ2G+ROuZpxDfJtzpds=";
           };
 
+          patches = [
+            ./nix/charts-non-interactive.patch
+          ];
+
           installPhase = ''
             mkdir -p $out
             cp -r ./* $out
