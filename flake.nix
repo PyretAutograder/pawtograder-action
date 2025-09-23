@@ -183,6 +183,7 @@
               "js-sha256"
               "resolve"
               "vega"
+              "ascii-table"
             ];
             keepJSON = builtins.toJSON keep;
             src = pkgs.runCommand "pyret-runtime-deps-src" { nativeBuildInputs = [ pkgs.jq ]; } ''
