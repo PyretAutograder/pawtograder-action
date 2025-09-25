@@ -51,9 +51,8 @@
     "glob": "^11.0.1",
     "jszip": "^3.10.1",
     "node-fetch": "^3.3.2",
-    "pyret-autograder": "0.0.1-pre.39",
+    "pyret-autograder": "0.0.1-pre.40",
     "pyret-autograder-pawtograder": "0.0.1-pre.32",
-    "pyret-lang": "npm:@ironm00n/pyret-lang@0.0.4",
     "tinyspawn": "^1.5.0",
     "ts-interface-checker": "^1.0.2"
   },

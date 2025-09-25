@@ -15,7 +15,7 @@
       inherit (nixpkgs) lib legacyPackages;
       eachSystem = f: lib.genAttrs (import systems) (system: f legacyPackages.${system});
       # mainNpmDepsHash = lib.fakeHash;
-      mainNpmDepsHash = "sha256-jPPtE9lVvwWS4zA8Qjrtj2Ug/6YoRTEFCj2DmpJIpCQ=";
+      mainNpmDepsHash = "sha256-XdpIYxCTpUp+v3ehBEUjP+xCDWkowRMYvgBIeZsjYmI=";
     in
     {
       packages = eachSystem (pkgs: rec {
@@ -75,9 +75,9 @@
             name = "pyret-lang";
             owner = "ironm00n";
             repo = "pyret-lang";
-            rev = "d4c15493820c29d7ca627eff97761094bde4ac57";
+            rev = "75e29b94ae61c0fef8171414d1743c027444eeb6";
             # sha256 = lib.fakeHash;
-            sha256 = "sha256-hcuNJisjr/OFP/cXSYxsH7aTYJ2G+ROuZpxDfJtzpds=";
+            sha256 = "sha256-WFn+FYqqK+D5WeL742oqu+4fCMFYSE8CyPunYYWmpX8=";
           };
 
           patches = [
@@ -123,13 +123,10 @@
           needsCanvas = true;
 
           # npmDepsHash = lib.fakeHash;
-          npmDepsHash = "sha256-97hXR2AK4ozW1I/W/rih2Kz+aKBtxvKoAY69qd5QHeE=";
+          npmDepsHash = "sha256-fYR/67nbU9hZTX9K8Oc8IVNe0RylKwJQK7rNwvTMISE="; 
 
           buildPhase = ''
             runHook preBuild
-
-            substituteInPlace Makefile \
-              --replace-fail "SHELL := /usr/bin/env bash" "SHELL := ${lib.getExe pkgs.bash}"
 
             npm rebuild
 
@@ -207,7 +204,7 @@
             needsCanvas = true;
 
             # npmDepsHash = lib.fakeHash;
-            npmDepsHash = "sha256-97hXR2AK4ozW1I/W/rih2Kz+aKBtxvKoAY69qd5QHeE=";
+            npmDepsHash = "sha256-fYR/67nbU9hZTX9K8Oc8IVNe0RylKwJQK7rNwvTMISE=";
             npmPruneFlags = [ "--omit=dev" ];
 
             buildPhase = ''
@@ -291,9 +288,6 @@
 
           buildPhase = ''
             runHook preBuild
-
-            substituteInPlace node_modules/pyret-lang/Makefile \
-              --replace-fail "SHELL := /usr/bin/env bash" "SHELL := ${lib.getExe pkgs.bash}"
 
             npm rebuild
 
