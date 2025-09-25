@@ -19,7 +19,7 @@ console.log(
   `Grading submissions in ${submissionDir} against solution in ${solutionDir}`
 )
 grade(solutionDir, submissionDir).then(async (feedback) => {
-  console.dir(feedback, { depth: 2 })
+  console.dir(feedback, { depth: 3 })
   await writeFile(
     'pawtograder-feedback.json',
     JSON.stringify(feedback, null, 2)
