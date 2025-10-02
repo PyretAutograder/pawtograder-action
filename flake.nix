@@ -81,7 +81,7 @@
           };
 
           patches = [
-            ./nix/charts-non-interactive.patch
+            ./nix/charts.patch
           ];
 
           installPhase = ''
