@@ -1,4 +1,6 @@
-# Pawtograder Assignment Action
+# Pyret Pawtograder Action
+
+Fork of [pawtograder/assignment-action](https://github.com/pawtograder/assignment-action/)
 
 ## Grading Overview
 
@@ -27,7 +29,7 @@ grader (the grader repository that is configured for the assignment).
 Within the action, the `Grader` class is responsible for executing the grading
 process, utilizing the `pawtograder.yml` configuration file in the grader
 repository. This configuration file implements the `PawtograderConfig` interface
-(see `src/grader/types.ts`).
+(see `src/grading/types.ts`).
 
 Upon completion of the grading process, the `autograder-submit-feedback`
 function is called with grading results, again relying on the GitHub OIDC token
@@ -41,7 +43,7 @@ To test changes to the grader, you can run it locally without invoking GitHub
 Actions or interfacing with Pawtograder at all:
 
 ```bash
-npx tsimp src/grading/main.ts -s /full/path/to/solution/repo -u /full/path/to/submission/repo
+nix run .#grade -s /full/path/to/solution/repo -u /full/path/to/submission/repo
 ```
 
 Note: Be sure to use full paths from the root of your computer for the solution
@@ -55,17 +57,6 @@ Every time you run the action, solution/student files get copied into a
 temporary `pawtograder-grading/` directory. This directory persists after runs
 for debugging purposes. Be sure to delete this directory after each run or else
 you may face a EACCES copyfile error or get weird results with nested folders.
-
-### Transpile before pushing
-
-GitHub Actions will only run JS, so we need to transpile before pushing:
-
-```bash
-npm run bundle
-```
-
-The CI workflow will fail if the `dist/` directory does not match what is
-expected from the build.
 
 ## About the configuration file
 
