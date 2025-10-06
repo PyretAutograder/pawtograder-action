@@ -15,7 +15,7 @@
       inherit (nixpkgs) lib legacyPackages;
       eachSystem = f: lib.genAttrs (import systems) (system: f legacyPackages.${system});
       # mainNpmDepsHash = lib.fakeHash;
-      mainNpmDepsHash = "sha256-U6Zxr1LFDHDoduSXmu915psO4uo+3DKTFa+HJtPNab8=";
+      mainNpmDepsHash = "sha256-duh7MXpIkx0e7p6WNL8kc2QLGjLH3LEXUmIMN5OkVw0=";
     in
     {
       packages = eachSystem (pkgs: rec {
@@ -123,7 +123,7 @@
           needsCanvas = true;
 
           # npmDepsHash = lib.fakeHash;
-          npmDepsHash = "sha256-fYR/67nbU9hZTX9K8Oc8IVNe0RylKwJQK7rNwvTMISE="; 
+          npmDepsHash = "sha256-fYR/67nbU9hZTX9K8Oc8IVNe0RylKwJQK7rNwvTMISE=";
 
           buildPhase = ''
             runHook preBuild
