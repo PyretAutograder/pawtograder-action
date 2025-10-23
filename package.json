@@ -57,7 +57,7 @@
     "@eslint/compat": "^1.2.5",
     "@github/local-action": "^6.0.0",
     "@openapi-codegen/cli": "^3.0.1",
-    "@openapi-codegen/typescript": "^8.1.1",
+    "@openapi-codegen/typescript": "^11.1.0",
     "@rollup/plugin-commonjs": "^28.0.8",
     "@rollup/plugin-node-resolve": "^16.0.3",
     "@rollup/plugin-typescript": "^12.1.1",
